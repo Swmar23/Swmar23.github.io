@@ -191,6 +191,7 @@ img#portret {
   object-fit: contain;
 }
 
+
 footer {
   display: flex;
   flex-direction: row;
@@ -220,6 +221,10 @@ article.landingArticle {
   flex-wrap: wrap;
   min-width: 0;
   flex-direction: row;
+}
+
+article.landingArticle p {
+  text-align: justify;
 }
 
 section.project {
