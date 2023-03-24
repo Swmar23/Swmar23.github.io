@@ -59,7 +59,7 @@ body {
   justify-self: left;
   margin: 5px;
   color: #000;
-	font-size:30px;
+	font-size:27px;
   cursor:pointer;
 }
 
@@ -184,8 +184,9 @@ section div#leftSide p {
 }
 
 img#portret {
-  width:80%;
-  margin-left: 10%;
+  width:70%;
+  margin-left: 15%;
+  border-radius: 20%;
   margin-top: 20%;
   height: auto;
   object-fit: contain;
@@ -377,8 +378,8 @@ table, th, td {
   }
 
   img#portret {
-    width:45%;
-    margin-left: 5%;
+    width:25%;
+    margin-left: 25%;
     margin-top: 0%;
     height: auto;
   }
