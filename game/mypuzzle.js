@@ -57,7 +57,7 @@ let _blank;
 let _stage;
 let _canvas;
 let _img;
-let _pieces;  //na indeksie 0 tej tablicy jest początkowo 0 tile, 1, 1 itp
+let _pieces;  //at start at index 0 we have element '0', at index 1 '1' and so on
 let _puzzleWidth;
 let _puzzleHeight;
 let _canvasPieceWidth;
@@ -176,6 +176,7 @@ function setCanvas(){
   _canvas.height = _puzzleHeight;
   _canvas.style.border = "1px solid black";
 }
+
 function initPuzzle(){
   _blank = _puzzleDifficulty * _puzzleDifficulty - 1;
   _pieces = [];
@@ -184,6 +185,7 @@ function initPuzzle(){
   createTitle("Click to Start Puzzle");
   buildPieces();
 }
+
 function createTitle(msg){
   _stage.fillStyle = "#808080";
   _stage.globalAlpha = 0.8;
@@ -207,29 +209,7 @@ function shufflePuzzle(){
   document.getElementById("select").style.display = "block";
   _pieces = shuffleArray(_pieces);
   _stage.clearRect(0,0,_puzzleWidth,_puzzleHeight);
-  let pieceCurrentIndex;
-  for(i = 0;i < _pieces.length;i += 1) {
-    pieceCurrentIndex = _pieces[i];
-    if(i == _blank) {
-      _stage.fillStyle = "blue";
-      _stage.fillRect(getXCanvasCordFromIndex(pieceCurrentIndex), getYCanvasCordFromIndex(pieceCurrentIndex), _canvasPieceWidth, _canvasPieceHeight);
-      _stage.strokeRect(getXCanvasCordFromIndex(pieceCurrentIndex), getYCanvasCordFromIndex(pieceCurrentIndex), _canvasPieceWidth, _canvasPieceHeight);
-    }
-    else {
-      _stage.drawImage
-      ( 
-        _img, 
-        getXImageCordFromIndex(i),
-        getYImageCordFromIndex(i), 
-        _imgPieceWidth, _imgPieceHeight, 
-        getXCanvasCordFromIndex(pieceCurrentIndex),
-        getYCanvasCordFromIndex(pieceCurrentIndex),
-        _canvasPieceWidth,
-        _canvasPieceHeight
-      );
-      _stage.strokeRect(getXCanvasCordFromIndex(pieceCurrentIndex), getYCanvasCordFromIndex(pieceCurrentIndex), _canvasPieceWidth, _canvasPieceHeight);
-    }
-  }
+  updateCanvas();
   document.onmousemove = highlightPieces;
   document.onclick = movePiece;
   localStorage.setItem("boardState", JSON.stringify(_pieces));
@@ -248,6 +228,19 @@ function highlightPieces(e) {
       _mouse.y = e.offsetY - _canvas.offsetTop;
   }
   _hoveredPiece = checkGridIndexHovered();
+  updateCanvas();
+  if(_hoveredPiece != null) {
+    if(_hoveredPiece + 1 == _pieces[_blank] || _hoveredPiece - 1 == _pieces[_blank] || _hoveredPiece + _puzzleDifficulty == _pieces[_blank] || _hoveredPiece - _puzzleDifficulty == _pieces[_blank]) {
+      _stage.save();
+      _stage.globalAlpha = 0.4;
+      _stage.fillStyle = PUZZLE_HOVER_TINT;
+      _stage.fillRect(getXCanvasCordFromIndex(_hoveredPiece), getYCanvasCordFromIndex(_hoveredPiece), _canvasPieceWidth, _canvasPieceHeight);
+      _stage.restore();
+    }
+  }
+}
+
+function updateCanvas() {
   let pieceCurrentIndex;
   let i;
   _stage.clearRect(0,0,_puzzleWidth,_puzzleHeight);
@@ -273,18 +266,9 @@ function highlightPieces(e) {
       _stage.strokeRect(getXCanvasCordFromIndex(pieceCurrentIndex), getYCanvasCordFromIndex(pieceCurrentIndex), _canvasPieceWidth, _canvasPieceHeight);
     }
   }
-  if(_hoveredPiece != null) {
-    if(_hoveredPiece + 1 == _pieces[_blank] || _hoveredPiece - 1 == _pieces[_blank] || _hoveredPiece + _puzzleDifficulty == _pieces[_blank] || _hoveredPiece - _puzzleDifficulty == _pieces[_blank]) {
-      _stage.save();
-      _stage.globalAlpha = 0.4;
-      _stage.fillStyle = PUZZLE_HOVER_TINT;
-      _stage.fillRect(getXCanvasCordFromIndex(_hoveredPiece), getYCanvasCordFromIndex(_hoveredPiece), _canvasPieceWidth, _canvasPieceHeight);
-      _stage.restore();
-    }
-  }
 }
 
-function checkGridIndexHovered() { //zwraca indeks tablicy _pieces elementu nad którym jest myszka
+function checkGridIndexHovered() { //returns of hovered index element
   let i;
   for(i = 0;i < _pieces.length;i += 1){
     if(_mouse.x < getXCanvasCordFromIndex(i) || _mouse.x > (getXCanvasCordFromIndex(i) + _canvasPieceWidth) || _mouse.y < getYCanvasCordFromIndex(i) || _mouse.y > (getYCanvasCordFromIndex(i) + _canvasPieceHeight)){
