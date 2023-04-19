@@ -348,6 +348,7 @@ function updatePuzzleAndCheckWin() {
     }
   }
   if(gameWin){
+    localStorage.clear();
     setTimeout(gameOver,500);
   }
 }
