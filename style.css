@@ -408,7 +408,7 @@ table, th, td {
   z-index: 1000;
 }
 
-body:not(.js-enabled) .mySpan {
+body:not(.js-enabled) #mySpan {
   display: none;
 }
 
