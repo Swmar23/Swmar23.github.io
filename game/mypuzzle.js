@@ -38,7 +38,7 @@ function selectBoard(id) {
   board3.classList.remove("selected");
   document.getElementById(id).classList.add("selected");
   const selectedImage = document.getElementById(id);
-  selectedBoard = selectedImage.src.split("/").pop();
+  selectedBoard = "game/" + selectedImage.src.split("/").pop();
 }
 
 // Submit the form when the user clicks the "Submit" button
