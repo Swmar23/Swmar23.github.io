@@ -416,6 +416,25 @@ body.js-enabled #myTopnav .dropdown {
   display: none;
 }
 
+/* Style do galerii (języki programowania) */
+
+.contact .programming-logos {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  display: grid;
+  grid-template: repeat(3, auto) / repeat(3, auto);
+  width: 100%;
+}
+
+.contact .programming-logos img {
+  width: 12vw;
+}
+
+.contact #logos-header {
+  margin-top: 50px;
+}
+
+
 @media only screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}
 }
@@ -586,4 +605,17 @@ body.js-enabled #myTopnav .dropdown {
     margin: 5%;
     margin-top: 0%;
   }
+
+    /* Style do galerii (języki programowania) */
+
+  .contact .programming-logos {
+    display: grid;
+    grid-template: repeat(2, auto) / repeat(5, auto);
+    width: 100%;
+  }
+
+  .contact .programming-logos img {
+    width: 6vw;
+  }
+
 }

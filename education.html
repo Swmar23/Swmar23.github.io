@@ -10,8 +10,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap" rel="stylesheet">
   <title>Wykształcenie</title>
 </head>
-<body>
 
+<body id="myBody">
 <nav id="myTopnav"> 
   <span id="mySpan" onclick="openNav()">   &#9776;  </span> 
   <div class="dropdown">
@@ -61,10 +61,42 @@
     <section class="contact">
       <h4>Co studiuję i w czym piszę?</h4>
       <p>Studiuję informatykę algorytmiczną na Politechnice Wrocławskiej. Obecnie jestem na 6 semestrze studiów.</p>
-      <p>Języki, w których najwięcej programowałem: Java (w tym z użyciem Maven), Julia, C++, Python, SQL</p>
-      <p>Pozostałe języki, w których miałem okazję pisać (na poziomie podstawowym): C, HTML, CSS, JavaScript, Prolog, Haskell, Kotlin</p>
-      <p>Ponadto potrafię korzystać z podstawowych funkcjonalności systemów kontroli wersji SVN oraz Git.</p>
 
+      <h5 id="logos-header">Języki, w których najwięcej programowałem:</h5>
+      <div id="lang1" class="programming-logos"></div>
+      <noscript>
+        <div id="lang1-noscript" class="programming-logos">
+          <img src="programming_logos/java.png" alt="Java logo">
+          <img src="programming_logos/julia.png" alt="Julia logo">
+          <img src="programming_logos/c++.png" alt="C++ logo">
+          <img src="programming_logos/python.png" alt="Java logo">
+          <img src="programming_logos/mysql.png" alt="MySQL logo">
+        </div>
+      </noscript>
+
+      <h5 id="logos-header">Pozostałe języki, w których miałem okazję pisać (na poziomie podstawowym): </h5>
+      <div id="lang2" class="programming-logos"></div>
+      <noscript>
+        <div id="lang2-noscript" class="programming-logos">
+          <img src="programming_logos/c.png" alt="C logo">
+          <img src="programming_logos/html5.png" alt="HTML5 logo">
+          <img src="programming_logos/css.png" alt="CSS logo">
+          <img src="programming_logos/sass.png" alt="SASS logo">
+          <img src="programming_logos/javascript.png" alt="JavaScript logo">
+          <img src="programming_logos/swipl.png" alt="Prolog (swipl) logo">
+          <img src="programming_logos/haskell.png" alt="Haskell logo">
+          <img src="programming_logos/kotlin.png" alt="Kotlin logo">
+        </div>
+      </noscript>
+
+      <h5 id="logos-header">Ponadto potrafię korzystać z podstawowych funkcjonalności systemów kontroli wersji: </h5>
+      <div id="lang3" class="programming-logos"></div>
+      <noscript>
+        <div id="lang3-noscript" class="programming-logos">
+          <img src="programming_logos/svn.png" alt="Subversion logo">
+          <img src="programming_logos/git.png" alt="Git logo">
+        </div>
+      </noscript>
     </section>
     <section class="contact">
         <h4 id="repozytoria-z-moim-wkładem-w-ramach-studiów">Repozytoria z moim
@@ -270,6 +302,6 @@
 </footer>
 
 <script src="sideNav.js"></script>
-   
+<script src="promisesImages.js"></script>
 </body>
 </html> 
