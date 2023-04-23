@@ -366,8 +366,11 @@ function isSolvable(o){
   }
   const blankIndex = board.indexOf(0);
   const blankRow = Math.floor(blankIndex / Math.sqrt(board.length));
-  const parity = (inversions % 2 === 0) === (blankRow % 2 === 1);
-  return parity;
+  if(_puzzleDifficulty % 2 === 1) {
+    return (inversions % 2 === 0)
+  } else {
+    return ((inversions + blankRow) % 2 === 1)
+  }
 }
 
 function shuffleArray(o){
