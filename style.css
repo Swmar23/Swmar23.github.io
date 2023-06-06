@@ -434,6 +434,10 @@ body.js-enabled #myTopnav .dropdown {
   margin-top: 50px;
 }
 
+nav {
+  z-index: 101;
+}
+
 
 @media only screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}
