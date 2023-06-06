@@ -20,7 +20,7 @@ Promise.all([
     loadIMG("programming_logos/julia.png","lang1"), 
     loadIMG("programming_logos/c++.png","lang1"), 
     loadIMG("programming_logos/python.png","lang1"), 
-    loadIMG("programming_logos/mysql.png","lang1"),  
+    loadIMG("programming_logos/mysql.png","lang1")
   ]).then(function() {
     console.log("Wszystkie loga (lang1) załadowane poprawnie!");
   }).catch(function() {
@@ -36,7 +36,7 @@ Promise.all([
   loadIMG("programming_logos/javascript.png","lang2"),  
   loadIMG("programming_logos/swipl.png","lang2"),  
   loadIMG("programming_logos/haskell.png","lang2"),  
-  loadIMG("programming_logos/kotlin.png","lang2"),  
+  loadIMG("programming_logos/kotlin.png","lang2")  
 ]).then(function() {
   console.log("Wszystkie loga (lang2) załadowane poprawnie!");
 }).catch(function() {
@@ -45,7 +45,7 @@ Promise.all([
 
 Promise.all([
   loadIMG("programming_logos/svn.png","lang3"),
-  loadIMG("programming_logos/git.png","lang3"), 
+  loadIMG("programming_logos/git.png","lang3") 
 ]).then(function() {
   console.log("Wszystkie loga (lang3) załadowane poprawnie!");
 }).catch(function() {

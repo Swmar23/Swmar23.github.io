@@ -54,6 +54,10 @@
   <a href="contact.html">Kontakt</a>
 </nav>
 
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+
 
 <main>
   <article>
@@ -79,9 +83,25 @@
       <p>Dziedzina algorytmów optymalizacyjnych jest bardzo szeroka. Zaliczyć do niej można m.in. algorytmy programowania liniowego, heurystyki i metaheurystyki (przydatne dla problemów NP-trudnych), programowanie dynamiczne,
         algorytmy aproksymacyjne i wiele, wiele innych kategorii. Przykładowo, na ilustracji obok znajduje się jedno z możliwych rozwiązań problemu komiwojażera. Polega on na tym, że
         chce znaleźć trasę (cykl) łączącą wszystkie punkty, która będzie miała najmniejszą długość. Problem komiwojażera jest problemem NP-trudnym, sprawdzenie wszystkich możliwości dla choćby czterdziestu wierzchołków
-        połączonych każdy z każdym daje nam aż 40! &approx; 10<sup>48</sup> potencjalnych tras do sprawdzenia, co rzędowo jest porównywalne z liczbą wszystkich atomów na Ziemi. Widać zatem, że bezmyślne sprawdzanie wszystkiego
+        połączonych każdy z każdym daje nam aż \(40! \approx 10^{48}\) potencjalnych tras do sprawdzenia, co rzędowo jest porównywalne z liczbą wszystkich atomów na Ziemi. Widać zatem, że bezmyślne sprawdzanie wszystkiego
         doprowadzi nas do nikąd, potrzeba sprytnych algorytmów korzystających z pewnych heurystyk zmniejszających liczbę przeszukiwanych rozwiązań.
       </p>
+      <h5>Przykład – sformułowanie problemu komiwojażera jako zagadnienie ILP</h5>
+      <p>
+        Problem komiwojażera możemy zamodelować z wykorzystaniem programowania liniowego całkowitoliczbowego. Niech \(x_{ij}\) będzie zmienną decyzyjną określającą czy krawędź \((i,j)\) została wzięta w rozwiązaniu problemu.
+        Dany jest zbiór wierzchołków \(V = \{1,2,\dots,n\}\) oraz macierz kosztów krawędzi \(C = [c_{ij}]_{(i,j)\in V \times V}\). Model ILP zapisać możemy następująco: 
+        <br>minimize: $$ \sum_{i=1}^{n} \sum_{j=1, j\neq i}^{n} x_{ij}c_{ij} $$
+        subject to: 
+        $$ x_{ij} \in \{0,1\} $$
+        $$ \sum_{j=1, j\neq i}^{n} x_{ij} = 1 $$
+        $$ \sum_{j=1, j\neq i}^{n} x_{ji} = 1 $$
+        $$ (\forall Q \subseteq V : |Q| \geq 2) (\sum_{i\in Q}\sum_{j\in Q}x_{ij} \leq |Q| - 1) $$ Ostatni warunek jest upewnieniem się, że jest tylko jeden główny cykl składający się z wszystkich wierzchołków (sformułowanie Dantziga–Fulkersona–Johnsona).
+      </p>
+      <p>
+        Uzyskany w ten sposób model możemy rozwiązać z wykorzystaniem różnych metod, np. metody ,,branch and bound". Oczywiście stosowanie takiego modelu dla dużych instancji jest skazane na niepowodzenie – jest to problem NP-trudny. 
+        Dla dużych instancji warto zaimplementować algorytmy metaheurystyczne, np. Tabu Search z różnymi wersjami sąsiedztw do wzmocnienia zarówno dywersyfikacji, jak i intensyfikacji przeszukiwań przestrzeni rozwiązań.
+      </p>
+      
      
     </section>
     <section class="contact">
